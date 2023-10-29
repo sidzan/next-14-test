@@ -13,7 +13,10 @@ import { unstable_noStore as noStore } from 'next/cache';
 
 
 const waitFormMe = async (time:number) => {
-    return new Promise((resolve) => setTimeout(resolve, time));
+    if (process.env.NODE_ENV === 'development') {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
 }
 
 export async function fetchRevenue() {
